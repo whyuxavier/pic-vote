@@ -393,4 +393,47 @@ function plural(n){
 async function toggle(id){
   const on = mine.has(id);
   if (!on && mine.size >= MAX_VOTES){
-    toast(`Усі ${MA
+    toast(`Усі ${MAX_VOTES} голоси вже використано. Зніми один, щоб обрати іншу.`);
+    return;
+  }
+  on ? mine.delete(id) : mine.add(id);
+  safeSet(MINE_KEY, JSON.stringify([...mine]));
+  render();
+  try{ await store.change(id, on ? -1 : 1); }
+  catch(e){
+    console.error(e);
+    on ? mine.add(id) : mine.delete(id);
+    safeSet(MINE_KEY, JSON.stringify([...mine]));
+    render();
+    toast("Не вдалося зберегти голос. Спробуй ще раз.");
+  }
+}
+
+let tt;
+function toast(t){
+  const el = $("toast"); el.textContent = t; el.classList.add("show");
+  clearTimeout(tt); tt = setTimeout(()=>el.classList.remove("show"), 2800);
+}
+
+$("sort").addEventListener("click", () => {
+  sortByVotes = !sortByVotes;
+  $("sort").textContent = sortByVotes ? "Показати за номерами" : "Сортувати за зірочками";
+  render();
+});
+$("lb").addEventListener("click", () => $("lb").classList.remove("open"));
+document.addEventListener("keydown", e => { if (e.key==="Escape"){ $("lb").classList.remove("open"); $("about").classList.remove("open"); } });
+
+/* --- старт --- */
+images = await listImages();
+if (!images.length){
+  $("msg").textContent = "Картинок не знайдено. Поклади файли (jpg, png) у папку img.";
+} else {
+  $("msg").remove();
+  // голоси за картинки, яких уже немає в папці, не враховуємо
+  mine = new Set([...mine].filter(id => images.some(im => im.id === id)));
+  build();
+  store.listen(c => { counts = c; render(); });
+}
+</script>
+</body>
+</html>
