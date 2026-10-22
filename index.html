@@ -3,13 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Хелоуін-аватарки: голосування 🎃</title>
+<title>Хелоуін-аватарки: голосування</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🎃%3C/text%3E%3C/svg%3E">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("avatarTheme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root{
+  color-scheme:light;
   --ink:#4d4358; --muted:#8f8498; --card:rgba(255,255,255,.74); --line:#eadfef;
   --star:#efa65f; --star-off:#ddd3e6; --lav:#d8cdea; --peach:#f8dcc2; --mint:#d9e6dd;
+  --g1:#fbd9bb; --g2:#e0d4f1; --g3:#e8d9f0; --base:#fbf4ef;
+  --bar:rgba(255,255,255,.82); --btn:#fff; --btn-hover:#f3edf9; --star-bg:#faf7fd; --star-bg-on:#fdebd8;
+  --h1:#6d4f80; --mine-border:#f0c79c; --mine-shadow:rgba(239,166,95,.26);
+  --demo-bg:#fbf3df; --demo-line:#ecd9ab; --sheet:#fffaf6;
+  --web:#c4b6dc; --web-o:.6;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ink:#f1eaf7; --muted:#b9afc9; --card:rgba(56,48,80,.72); --line:#4d4369;
+  --star:#f4b97c; --star-off:#6b5f88; --lav:#4d4570; --peach:#5d4a46; --mint:#3f5352;
+  --g1:#5a4690; --g2:#33508a; --g3:#4a3a85; --base:#161026;
+  --bar:rgba(46,40,68,.86); --btn:#3a3256; --btn-hover:#473e68; --star-bg:#3a3256; --star-bg-on:#5a4636;
+  --h1:#f3dcf6; --mine-border:#b48560; --mine-shadow:rgba(244,185,124,.2);
+  --demo-bg:#4a3f2e; --demo-line:#7a6643; --sheet:#2d2742;
+  --web:#9a88c9; --web-o:.34;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -17,29 +35,37 @@ body{
   margin:0; min-height:100vh; color:var(--ink);
   font-family:"Nunito",ui-rounded,system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.5;
   background:
-    radial-gradient(900px 520px at 0% -10%, #fbd9bb 0%, transparent 62%),
-    radial-gradient(800px 520px at 100% 0%, #e0d4f1 0%, transparent 62%),
-    radial-gradient(1000px 600px at 50% 115%, #e8d9f0 0%, transparent 62%),
-    #fbf4ef;
+    radial-gradient(900px 520px at 0% -10%, var(--g1) 0%, transparent 62%),
+    radial-gradient(800px 520px at 100% 0%, var(--g2) 0%, transparent 62%),
+    radial-gradient(1000px 600px at 50% 115%, var(--g3) 0%, transparent 62%),
+    var(--base);
   background-attachment:fixed;
 }
 .wrap{max-width:1040px; margin:0 auto; padding:32px 18px 80px; position:relative; z-index:1}
-body::before,body::after{
-  content:""; position:fixed; top:0; width:170px; height:170px; pointer-events:none; opacity:.6; z-index:0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23c4b6dc' stroke-width='1.1'%3E%3Cpath d='M0 0H100M0 0L92 38M0 0L70 70M0 0L38 92M0 0V100M30 0Q22 22 0 30M60 0Q42 42 0 60M90 0Q62 62 0 90'/%3E%3C/svg%3E") no-repeat;
-  background-size:contain;
+body::before,body::after,html::before,html::after{
+  content:""; position:fixed; pointer-events:none; z-index:0; opacity:var(--web-o);
+  background:var(--web);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27 fill=%27none%27 stroke=%27black%27 stroke-width=%270.7%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M0 0H100M0 0L96 30M0 0L82 58M0 0L58 82M0 0L30 96M0 0V100M28.0 0.0Q23.6 3.6 26.9 8.4M26.9 8.4Q21.4 10.6 23.0 16.2M23.0 16.2Q16.9 16.9 16.2 23.0M16.2 23.0Q10.6 21.4 8.4 26.9M8.4 26.9Q3.6 23.6 0.0 28.0M50.0 0.0Q42.1 6.5 48.0 15.0M48.0 15.0Q38.3 18.9 41.0 29.0M41.0 29.0Q30.1 30.1 29.0 41.0M29.0 41.0Q18.9 38.3 15.0 48.0M15.0 48.0Q6.5 42.1 0.0 50.0M72.0 0.0Q60.7 9.3 69.1 21.6M69.1 21.6Q55.1 27.2 59.0 41.8M59.0 41.8Q43.3 43.3 41.8 59.0M41.8 59.0Q27.2 55.1 21.6 69.1M21.6 69.1Q9.3 60.7 0.0 72.0M100.0 0.0Q84.3 12.9 96.0 30.0M96.0 30.0Q76.5 37.8 82.0 58.0M82.0 58.0Q60.2 60.2 58.0 82.0M58.0 82.0Q37.8 76.5 30.0 96.0M30.0 96.0Q12.9 84.3 0.0 100.0%27/%3E%3C/svg%3E") no-repeat center/contain;
+  mask:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27 fill=%27none%27 stroke=%27black%27 stroke-width=%270.7%27 stroke-linecap=%27round%27%3E%3Cpath d=%27M0 0H100M0 0L96 30M0 0L82 58M0 0L58 82M0 0L30 96M0 0V100M28.0 0.0Q23.6 3.6 26.9 8.4M26.9 8.4Q21.4 10.6 23.0 16.2M23.0 16.2Q16.9 16.9 16.2 23.0M16.2 23.0Q10.6 21.4 8.4 26.9M8.4 26.9Q3.6 23.6 0.0 28.0M50.0 0.0Q42.1 6.5 48.0 15.0M48.0 15.0Q38.3 18.9 41.0 29.0M41.0 29.0Q30.1 30.1 29.0 41.0M29.0 41.0Q18.9 38.3 15.0 48.0M15.0 48.0Q6.5 42.1 0.0 50.0M72.0 0.0Q60.7 9.3 69.1 21.6M69.1 21.6Q55.1 27.2 59.0 41.8M59.0 41.8Q43.3 43.3 41.8 59.0M41.8 59.0Q27.2 55.1 21.6 69.1M21.6 69.1Q9.3 60.7 0.0 72.0M100.0 0.0Q84.3 12.9 96.0 30.0M96.0 30.0Q76.5 37.8 82.0 58.0M82.0 58.0Q60.2 60.2 58.0 82.0M58.0 82.0Q37.8 76.5 30.0 96.0M30.0 96.0Q12.9 84.3 0.0 100.0%27/%3E%3C/svg%3E") no-repeat center/contain;
 }
-body::before{left:0}
-body::after{right:0; transform:scaleX(-1)}
-.emo{font-size:1.7rem; letter-spacing:.45em; margin-bottom:2px}
-header{text-align:center; margin-bottom:22px}
-h1{font-family:"Pacifico",cursive; font-size:clamp(1.6rem,5vw,2.4rem); font-weight:400; color:#6d4f80; margin:0 0 8px; line-height:1.3}
+body::before{top:0; left:0; width:clamp(120px,24vw,250px); height:clamp(120px,24vw,250px)}
+body::after{top:0; right:0; width:clamp(100px,19vw,200px); height:clamp(100px,19vw,200px); transform:scaleX(-1)}
+html::before{bottom:0; left:0; width:clamp(90px,16vw,180px); height:clamp(90px,16vw,180px); transform:scaleY(-1)}
+html::after{bottom:0; right:0; width:clamp(120px,22vw,230px); height:clamp(120px,22vw,230px); transform:rotate(180deg)}
+.emo{display:flex; justify-content:center; align-items:flex-end; gap:.35em; font-size:2rem; margin-bottom:6px}
+.emo span{display:inline-block}
+.emo span:nth-child(1){transform:rotate(-16deg) translateY(2px)}
+.emo span:nth-child(2){transform:rotate(8deg) scale(1.18)}
+.emo span:nth-child(3){transform:rotate(-10deg) translateY(-3px)}
+:root[data-theme="dark"] body{background:var(--base)}
+header{text-align:center; margin-bottom:22px; position:relative}
+h1{font-family:"Pacifico",cursive; font-size:clamp(1.6rem,5vw,2.4rem); font-weight:400; color:var(--h1); margin:0 0 8px; line-height:1.3}
 header p{margin:0 auto; max-width:520px; color:var(--muted)}
 
 .bar{
   position:sticky; top:10px; z-index:5; display:flex; flex-wrap:wrap; gap:10px 16px;
   align-items:center; justify-content:space-between;
-  background:rgba(255,255,255,.82); backdrop-filter:blur(8px);
+  background:var(--bar); backdrop-filter:blur(8px);
   border:1px solid var(--line); border-radius:18px; padding:10px 16px; margin:0 0 22px;
 }
 .left{display:flex; align-items:center; gap:10px; font-weight:600}
@@ -49,15 +75,15 @@ header p{margin:0 auto; max-width:520px; color:var(--muted)}
 .leader{font-size:.95rem; color:var(--muted)}
 .leader b{color:var(--ink)}
 button{font:inherit; color:inherit; cursor:pointer}
-.sort{border:1px solid var(--line); background:#fff; border-radius:12px; padding:6px 12px; font-size:.9rem}
-.sort:hover{background:#faf7fd}
+.sort{border:1px solid var(--line); background:var(--btn); border-radius:12px; padding:6px 12px; font-size:.9rem}
+.sort:hover{background:var(--btn-hover)}
 
 .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:18px}
 .card{
   background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden;
   display:flex; flex-direction:column; transition:box-shadow .2s, border-color .2s;
 }
-.card.mine{border-color:#f0c79c; box-shadow:0 6px 22px rgba(239,166,95,.26)}
+.card.mine{border-color:var(--mine-border); box-shadow:0 6px 22px var(--mine-shadow)}
 .pic{aspect-ratio:1/1; background:linear-gradient(135deg,var(--peach),var(--lav),var(--mint)); cursor:zoom-in}
 .pic img{width:100%; height:100%; object-fit:cover; display:block}
 .row{display:flex; align-items:center; justify-content:space-between; padding:12px 14px; gap:8px}
@@ -66,18 +92,18 @@ button{font:inherit; color:inherit; cursor:pointer}
 .row>div:first-child{min-width:0}
 .count{color:var(--muted); font-size:.92rem}
 .star{
-  border:0; background:#faf7fd; border-radius:14px; padding:8px 12px; font-size:1.05rem;
+  border:0; background:var(--star-bg); border-radius:14px; padding:8px 12px; font-size:1.05rem;
   display:flex; align-items:center; gap:6px; color:var(--star-off); transition:transform .15s, background .2s, color .2s;
 }
-.star:hover{background:#f3edf9}
+.star:hover{background:var(--btn-hover)}
 .star:active{transform:scale(.92)}
-.star.on{background:#fdebd8; color:var(--star)}
+.star.on{background:var(--star-bg-on); color:var(--star)}
 .star span{font-size:.9rem; color:var(--ink); font-weight:600}
 .crown{font-size:.95rem; margin-left:6px}
 
 .msg{text-align:center; color:var(--muted); padding:40px 0}
 .demo{
-  background:#fbf3df; border:1px solid #ecd9ab; border-radius:14px; padding:8px 14px;
+  background:var(--demo-bg); border:1px solid var(--demo-line); border-radius:14px; padding:8px 14px;
   font-size:.88rem; text-align:center; margin:0 0 16px;
 }
 .toast{
@@ -92,14 +118,41 @@ button{font:inherit; color:inherit; cursor:pointer}
 }
 .lb.open{display:flex}
 .lb img{max-width:min(92vw,640px); max-height:86vh; border-radius:20px; background:#fff}
-button:focus-visible,.pic:focus-visible{outline:3px solid #b9a6dd; outline-offset:2px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.tools{position:absolute; top:0; right:0; display:flex; gap:8px; z-index:2}
+.ibtn{
+  width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--btn);
+  display:grid; place-items:center; font-size:1rem; font-weight:800; font-family:inherit; line-height:1;
+}
+.ibtn:hover{background:var(--btn-hover)}
+.modal{
+  position:fixed; inset:0; background:rgba(15,10,25,.5); display:none;
+  align-items:center; justify-content:center; padding:20px; z-index:40;
+}
+.modal.open{display:flex}
+.sheet{
+  background:var(--sheet); border:1px solid var(--line); border-radius:22px;
+  max-width:420px; width:100%; padding:22px 22px 20px;
+}
+.sheet h2{margin:0 0 10px; font-size:1.2rem}
+.sheet p{margin:0 0 10px; color:var(--muted)}
+.sheet .acts{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+.sheet a,.sheet button{
+  border:1px solid var(--line); background:var(--btn); color:var(--ink); border-radius:12px;
+  padding:8px 14px; text-decoration:none; font:inherit; font-size:.95rem; cursor:pointer;
+}
+.sheet a:hover,.sheet button:hover{background:var(--btn-hover)}
+button:focus-visible,a:focus-visible,.pic:focus-visible{outline:3px solid #b9a6dd; outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important; animation:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="emo">🦇 🎃 👻</div>
+    <div class="tools">
+      <button class="ibtn" id="theme" aria-label="Змінити тему"></button>
+      <button class="ibtn" id="info" aria-label="Про голосування">i</button>
+    </div>
+    <div class="emo"><span>🦇</span><span>🎃</span><span>👻</span></div>
     <h1>Хелоуін-аватарки: обираємо улюблену</h1>
     <p>Познач зірочкою до трьох страшно гарних робіт. Передумав? Натисни ще раз, і голос зніметься.</p>
   </header>
@@ -120,6 +173,17 @@ button:focus-visible,.pic:focus-visible{outline:3px solid #b9a6dd; outline-offse
 </div>
 
 <div class="toast" id="toast"></div>
+<div class="modal" id="about" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+  <div class="sheet">
+    <h2 id="aboutTitle">Про голосування 🎃</h2>
+    <p>Тут обираємо найкращу хелоуінську аватарку для нашого Telegram-каналу з інформатики. Познач зірочкою до трьох робіт. Голос можна зняти й віддати іншій роботі. Результати оновлюються в реальному часі.</p>
+    <p>Ми не збираємо імена чи пошту, зберігається лише кількість зірочок.</p>
+    <div class="acts">
+      <a href="https://github.com/whyuxavier" target="_blank" rel="noopener">GitHub: whyuxavier</a>
+      <button id="aboutClose">Закрити</button>
+    </div>
+  </div>
+</div>
 <div class="lb" id="lb"><img id="lbimg" alt=""></div>
 
 <script type="module">
@@ -144,6 +208,22 @@ const firebaseConfig = {
 /* ====================================== */
 
 const $ = id => document.getElementById(id);
+
+/* --- тема та інформація (працюють одразу, ще до завантаження картинок) --- */
+function applyTheme(t){
+  document.documentElement.dataset.theme = t;
+  $("theme").textContent = t === "dark" ? "☀️" : "🌙";
+  $("theme").setAttribute("aria-label", t === "dark" ? "Увімкнути світлу тему" : "Увімкнути темну тему");
+}
+applyTheme(document.documentElement.dataset.theme || "dark");
+$("theme").addEventListener("click", () => {
+  const t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(t);
+  try{ localStorage.setItem("avatarTheme", t); }catch(e){}
+});
+$("info").addEventListener("click", () => $("about").classList.add("open"));
+$("aboutClose").addEventListener("click", () => $("about").classList.remove("open"));
+$("about").addEventListener("click", e => { if (e.target === $("about")) $("about").classList.remove("open"); });
 const cloud = !!firebaseConfig.projectId;
 const MINE_KEY = "avatarVotes";
 const DEMO_KEY = "avatarDemoCounts";
@@ -313,47 +393,4 @@ function plural(n){
 async function toggle(id){
   const on = mine.has(id);
   if (!on && mine.size >= MAX_VOTES){
-    toast(`Усі ${MAX_VOTES} голоси вже використано. Зніми один, щоб обрати іншу.`);
-    return;
-  }
-  on ? mine.delete(id) : mine.add(id);
-  safeSet(MINE_KEY, JSON.stringify([...mine]));
-  render();
-  try{ await store.change(id, on ? -1 : 1); }
-  catch(e){
-    console.error(e);
-    on ? mine.add(id) : mine.delete(id);
-    safeSet(MINE_KEY, JSON.stringify([...mine]));
-    render();
-    toast("Не вдалося зберегти голос. Спробуй ще раз.");
-  }
-}
-
-let tt;
-function toast(t){
-  const el = $("toast"); el.textContent = t; el.classList.add("show");
-  clearTimeout(tt); tt = setTimeout(()=>el.classList.remove("show"), 2800);
-}
-
-$("sort").addEventListener("click", () => {
-  sortByVotes = !sortByVotes;
-  $("sort").textContent = sortByVotes ? "Показати за номерами" : "Сортувати за зірочками";
-  render();
-});
-$("lb").addEventListener("click", () => $("lb").classList.remove("open"));
-document.addEventListener("keydown", e => { if (e.key==="Escape") $("lb").classList.remove("open"); });
-
-/* --- старт --- */
-images = await listImages();
-if (!images.length){
-  $("msg").textContent = "Картинок не знайдено. Поклади файли (jpg, png) у папку img.";
-} else {
-  $("msg").remove();
-  // голоси за картинки, яких уже немає в папці, не враховуємо
-  mine = new Set([...mine].filter(id => images.some(im => im.id === id)));
-  build();
-  store.listen(c => { counts = c; render(); });
-}
-</script>
-</body>
-</html>
+    toast(`Усі ${MA
