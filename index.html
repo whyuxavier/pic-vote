@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Голосування за аватарки 🎃</title>
+<title>Хелоуін-аватарки: голосування 🎃</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#4b4659; --muted:#8c869a; --card:rgba(255,255,255,.72); --line:#ebe5f1;
-  --star:#e9b75f; --star-off:#d9d3e3; --lav:#cfc3e6; --peach:#f6d9c4; --mint:#cfe6e3;
+  --ink:#4d4358; --muted:#8f8498; --card:rgba(255,255,255,.74); --line:#eadfef;
+  --star:#efa65f; --star-off:#ddd3e6; --lav:#d8cdea; --peach:#f8dcc2; --mint:#d9e6dd;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -17,15 +17,23 @@ body{
   margin:0; min-height:100vh; color:var(--ink);
   font-family:"Nunito",ui-rounded,system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.5;
   background:
-    radial-gradient(900px 500px at 10% -10%, #fbe9dc 0%, transparent 60%),
-    radial-gradient(800px 500px at 100% 0%, #e9e2f6 0%, transparent 60%),
-    radial-gradient(900px 600px at 50% 110%, #dcecea 0%, transparent 60%),
-    #faf6f8;
+    radial-gradient(900px 520px at 0% -10%, #fbd9bb 0%, transparent 62%),
+    radial-gradient(800px 520px at 100% 0%, #e0d4f1 0%, transparent 62%),
+    radial-gradient(1000px 600px at 50% 115%, #e8d9f0 0%, transparent 62%),
+    #fbf4ef;
   background-attachment:fixed;
 }
-.wrap{max-width:1040px; margin:0 auto; padding:32px 18px 80px}
+.wrap{max-width:1040px; margin:0 auto; padding:32px 18px 80px; position:relative; z-index:1}
+body::before,body::after{
+  content:""; position:fixed; top:0; width:170px; height:170px; pointer-events:none; opacity:.6; z-index:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23c4b6dc' stroke-width='1.1'%3E%3Cpath d='M0 0H100M0 0L92 38M0 0L70 70M0 0L38 92M0 0V100M30 0Q22 22 0 30M60 0Q42 42 0 60M90 0Q62 62 0 90'/%3E%3C/svg%3E") no-repeat;
+  background-size:contain;
+}
+body::before{left:0}
+body::after{right:0; transform:scaleX(-1)}
+.emo{font-size:1.7rem; letter-spacing:.45em; margin-bottom:2px}
 header{text-align:center; margin-bottom:22px}
-h1{font-size:clamp(1.7rem,5vw,2.5rem); font-weight:800; margin:0 0 6px; letter-spacing:-.01em}
+h1{font-family:"Pacifico",cursive; font-size:clamp(1.6rem,5vw,2.4rem); font-weight:400; color:#6d4f80; margin:0 0 8px; line-height:1.3}
 header p{margin:0 auto; max-width:520px; color:var(--muted)}
 
 .bar{
@@ -49,11 +57,13 @@ button{font:inherit; color:inherit; cursor:pointer}
   background:var(--card); border:1px solid var(--line); border-radius:22px; overflow:hidden;
   display:flex; flex-direction:column; transition:box-shadow .2s, border-color .2s;
 }
-.card.mine{border-color:#e7cf9f; box-shadow:0 6px 22px rgba(233,183,95,.22)}
+.card.mine{border-color:#f0c79c; box-shadow:0 6px 22px rgba(239,166,95,.26)}
 .pic{aspect-ratio:1/1; background:linear-gradient(135deg,var(--peach),var(--lav),var(--mint)); cursor:zoom-in}
 .pic img{width:100%; height:100%; object-fit:cover; display:block}
 .row{display:flex; align-items:center; justify-content:space-between; padding:12px 14px; gap:8px}
-.name{font-weight:800}
+.name{font-weight:800; display:flex; align-items:center; gap:4px}
+.name .t{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.row>div:first-child{min-width:0}
 .count{color:var(--muted); font-size:.92rem}
 .star{
   border:0; background:#faf7fd; border-radius:14px; padding:8px 12px; font-size:1.05rem;
@@ -61,7 +71,7 @@ button{font:inherit; color:inherit; cursor:pointer}
 }
 .star:hover{background:#f3edf9}
 .star:active{transform:scale(.92)}
-.star.on{background:#fbf0d9; color:var(--star)}
+.star.on{background:#fdebd8; color:var(--star)}
 .star span{font-size:.9rem; color:var(--ink); font-weight:600}
 .crown{font-size:.95rem; margin-left:6px}
 
@@ -89,8 +99,9 @@ button:focus-visible,.pic:focus-visible{outline:3px solid #b9a6dd; outline-offse
 <body>
 <div class="wrap">
   <header>
-    <h1>Обираємо нову аватарку 🎃</h1>
-    <p>Познач зірочкою до трьох робіт, які тобі сподобались. Передумав — натисни ще раз, і голос зніметься.</p>
+    <div class="emo">🦇 🎃 👻</div>
+    <h1>Хелоуін-аватарки: обираємо улюблену</h1>
+    <p>Познач зірочкою до трьох страшно гарних робіт. Передумав? Натисни ще раз, і голос зніметься.</p>
   </header>
 
   <div id="demo" class="demo" hidden>Демо-режим: голоси зберігаються лише в цьому браузері. Підключи Firebase, щоб усі бачили спільний результат.</div>
@@ -114,17 +125,21 @@ button:focus-visible,.pic:focus-visible{outline:3px solid #b9a6dd; outline-offse
 <script type="module">
 /* ============ НАЛАШТУВАННЯ ============ */
 const MAX_VOTES = 3;            // скільки голосів має кожен учень
-const FOLDER = "img";           // папка з картинками: img/1.png, img/2.png ...
+const FOLDER = "img";           // папка з картинками (будь-які назви, формати jpg/png/webp)
+const SHOW_NAMES = true;        // true: під картинкою показується назва файлу; false: «№ 1», «№ 2»...
+// Зазвичай нижче нічого міняти не треба: логін і репозиторій беруться з адреси сайту.
+const GITHUB_USER = "";
+const GITHUB_REPO = "";
 
 // Встав сюди конфіг із Firebase (Project settings → Your apps → Web app).
 // Поки projectId порожній, сайт працює в демо-режимі.
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyDHxeTlk-88PQel-nzZRerV5vrDYasSY5g",
+  authDomain: "whyuxavier.firebaseapp.com",
+  projectId: "whyuxavier",
+  storageBucket: "whyuxavier.firebasestorage.app",
+  messagingSenderId: "231033902932",
+  appId: "1:231033902932:web:3d0e4e956e571072c61ac1"
 };
 /* ====================================== */
 
@@ -133,28 +148,62 @@ const cloud = !!firebaseConfig.projectId;
 const MINE_KEY = "avatarVotes";
 const DEMO_KEY = "avatarDemoCounts";
 
-let total = 0;
+let images = [];                      // [{id, src, title}]
 let counts = {};                       // id -> кількість голосів
-let mine = new Set(JSON.parse(safeGet(MINE_KEY) || "[]").map(Number));
+let mine = new Set(JSON.parse(safeGet(MINE_KEY) || "[]").map(String));
 let sortByVotes = false;
 const cards = {};                      // id -> {el, cnt, btn, crown}
 
 function safeGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function safeSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
 
-/* --- скільки є картинок: пробуємо 1.png, 2.png ... доки не буде помилки --- */
-function probe(n){
+/* --- список картинок: GitHub API (будь-які назви) або запасний варіант 1.jpg, 2.jpg ... --- */
+const EXT = /\.(jpe?g|png|webp|gif)$/i;
+function mk(name){
+  const id = name.replace(/\.[^.]+$/, "");
+  return { id, src: `${FOLDER}/${encodeURIComponent(name)}`, title: id };
+}
+function probe(src){
   return new Promise(res=>{
     const im = new Image();
     im.onload = () => res(true);
     im.onerror = () => res(false);
-    im.src = `${FOLDER}/${n}.png`;
+    im.src = src;
   });
 }
-async function countImages(){
-  let n = 0;
-  while (await probe(n+1)) n++;
-  return n;
+async function listFromGithub(){
+  if (!GITHUB_USER && !location.hostname.endsWith(".github.io")) throw new Error("не GitHub Pages");
+  const owner = GITHUB_USER || location.hostname.split(".")[0];
+  const repo = GITHUB_REPO || location.pathname.split("/").filter(Boolean)[0];
+  if (!owner || !repo) throw new Error("невідомий репозиторій");
+  const key = "imgList:" + owner + "/" + repo;
+  try{
+    const c = JSON.parse(safeGet(key) || "null");
+    if (c && Date.now() - c.t < 300000) return c.names;      // кеш на 5 хвилин
+  }catch(e){}
+  const r = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${FOLDER}`);
+  if (!r.ok) throw new Error("GitHub API " + r.status);
+  const data = await r.json();
+  const names = data.filter(f => f.type === "file" && EXT.test(f.name)).map(f => f.name)
+    .sort((a,b) => a.localeCompare(b, "uk", { numeric:true }));
+  safeSet(key, JSON.stringify({ t: Date.now(), names }));
+  return names;
+}
+async function probeList(){
+  const out = [];
+  for (let n=1; ; n++){
+    let found = null;
+    for (const ext of ["jpg","jpeg","png","webp"]){
+      if (await probe(`${FOLDER}/${n}.${ext}`)){ found = `${n}.${ext}`; break; }
+    }
+    if (!found) break;
+    out.push(mk(found));
+  }
+  return out;
+}
+async function listImages(){
+  try{ return (await listFromGithub()).map(mk); }
+  catch(e){ console.warn("Список через GitHub недоступний, пробуємо 1.jpg, 2.jpg…", e); return probeList(); }
 }
 
 /* --- сховище голосів --- */
@@ -193,56 +242,65 @@ if (cloud){
 }
 
 /* --- інтерфейс --- */
+const esc = t => String(t).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+const label = (im, idx) => SHOW_NAMES ? im.title : "№ " + (idx+1);
+
 function build(){
   const grid = $("grid");
-  for (let i=1; i<=total; i++){
+  images.forEach((im, idx) => {
     const el = document.createElement("div");
     el.className = "card";
     el.innerHTML = `
-      <div class="pic" tabindex="0" role="button" aria-label="Збільшити аватарку ${i}">
-        <img src="${FOLDER}/${i}.png" alt="Аватарка ${i}" loading="lazy">
+      <div class="pic" tabindex="0" role="button">
+        <img loading="lazy">
       </div>
       <div class="row">
-        <div><div class="name">№ ${i}<span class="crown" hidden>👑</span></div><div class="count"></div></div>
-        <button class="star" aria-pressed="false" aria-label="Голос за аватарку ${i}">★<span>Голос</span></button>
+        <div><div class="name"><span class="t"></span><span class="crown" hidden>👑</span></div><div class="count"></div></div>
+        <button class="star" aria-pressed="false">★<span>Голос</span></button>
       </div>`;
+    const name = label(im, idx);
+    const img = el.querySelector("img");
+    img.src = im.src; img.alt = "Аватарка " + name;
+    el.querySelector(".t").textContent = name;
     const pic = el.querySelector(".pic");
-    const open = () => { $("lbimg").src = `${FOLDER}/${i}.png`; $("lb").classList.add("open"); };
+    pic.setAttribute("aria-label", "Збільшити аватарку " + name);
+    const open = () => { $("lbimg").src = im.src; $("lb").classList.add("open"); };
     pic.addEventListener("click", open);
     pic.addEventListener("keydown", e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } });
     const btn = el.querySelector(".star");
-    btn.addEventListener("click", () => toggle(i));
-    cards[i] = { el, cnt: el.querySelector(".count"), btn, crown: el.querySelector(".crown") };
+    btn.setAttribute("aria-label", "Голос за аватарку " + name);
+    btn.addEventListener("click", () => toggle(im.id));
+    cards[im.id] = { el, cnt: el.querySelector(".count"), btn, crown: el.querySelector(".crown") };
     grid.appendChild(el);
-  }
+  });
   const dots = $("dots");
   for (let k=0; k<MAX_VOTES; k++){ const d = document.createElement("span"); d.className="dot"; dots.appendChild(d); }
 }
 
 function render(){
-  const vals = Object.keys(cards).map(i => counts[i] || 0);
-  const top = Math.max(0, ...vals);
-  for (const i in cards){
-    const c = cards[i], v = counts[i] || 0, on = mine.has(+i);
+  const ids = images.map(im => im.id);
+  const top = Math.max(0, ...ids.map(i => counts[i] || 0));
+  ids.forEach(id => {
+    const c = cards[id], v = counts[id] || 0, on = mine.has(id);
     c.cnt.textContent = v + " " + plural(v);
     c.el.classList.toggle("mine", on);
     c.btn.classList.toggle("on", on);
     c.btn.setAttribute("aria-pressed", on);
     c.btn.firstElementChild.textContent = on ? "Мій голос" : "Голос";
     c.crown.hidden = !(top > 0 && v === top);
-  }
+  });
   const used = mine.size;
   [...$("dots").children].forEach((d,k)=> d.classList.toggle("on", k < MAX_VOTES-used));
   $("left").textContent = used >= MAX_VOTES ? "Голоси використано" : `Залишилось голосів: ${MAX_VOTES-used}`;
 
-  const leaders = Object.keys(cards).filter(i => top>0 && (counts[i]||0)===top);
+  const leaders = images.map((im,idx)=>({im,idx})).filter(x => top>0 && (counts[x.im.id]||0)===top);
   $("leader").innerHTML = leaders.length
-    ? `Лідирує: <b>${leaders.map(i=>"№ "+i).join(", ")}</b> (${top} ${plural(top)})`
+    ? `Лідирує: <b>${leaders.map(x=>esc(label(x.im,x.idx))).join(", ")}</b> (${top} ${plural(top)})`
     : "Голосів ще немає";
 
-  const order = Object.keys(cards).map(Number);
-  if (sortByVotes) order.sort((a,b)=> (counts[b]||0)-(counts[a]||0) || a-b);
-  order.forEach(i => $("grid").appendChild(cards[i].el));
+  const order = images.map((im,idx)=>({id:im.id, idx}));
+  if (sortByVotes) order.sort((a,b)=> (counts[b.id]||0)-(counts[a.id]||0) || a.idx-b.idx);
+  order.forEach(o => $("grid").appendChild(cards[o.id].el));
 }
 
 function plural(n){
@@ -286,11 +344,13 @@ $("lb").addEventListener("click", () => $("lb").classList.remove("open"));
 document.addEventListener("keydown", e => { if (e.key==="Escape") $("lb").classList.remove("open"); });
 
 /* --- старт --- */
-total = await countImages();
-if (!total){
-  $("msg").textContent = "Картинок не знайдено. Поклади файли 1.png, 2.png… у папку img.";
+images = await listImages();
+if (!images.length){
+  $("msg").textContent = "Картинок не знайдено. Поклади файли (jpg, png) у папку img.";
 } else {
   $("msg").remove();
+  // голоси за картинки, яких уже немає в папці, не враховуємо
+  mine = new Set([...mine].filter(id => images.some(im => im.id === id)));
   build();
   store.listen(c => { counts = c; render(); });
 }
